@@ -115,33 +115,47 @@ const PDFtoCSV = () => {
     setError(null)
 
     try {
-      const formData = new FormData()
-      formData.append('file', file)
+      // Import the API client dynamically
+      const { uploadPdf, pollJobStatus, getDownloadUrl } = await import('../../api/pdfToCsvApi');
 
-      console.log('Uploading file to backend:', BACKEND_URL)
+      console.log('Uploading file...')
 
-      const response = await fetch(`${BACKEND_URL}/upload`, {
-        method: 'POST',
-        body: formData
-      })
-
-      if (!response.ok) {
-        throw new Error(`Upload failed: ${response.status} ${response.statusText}`)
-      }
-
-      const result = await response.json()
-      console.log('Upload response:', result)
+      // Upload file
+      const uploadResponse = await uploadPdf(file);
+      console.log('Upload response:', uploadResponse)
 
       setIsUploading(false)
       setIsProcessing(true)
 
       // Check if conversion is complete or needs polling
-      if (result.downloadUrl) {
+      if (uploadResponse.downloadUrl) {
         setIsProcessing(false)
-        setDownloadUrl(result.downloadUrl)
-      } else if (result.jobId) {
+        setDownloadUrl(uploadResponse.downloadUrl)
+      } else if (uploadResponse.jobId) {
         // Poll for completion
-        await pollForCompletion(result.jobId)
+        console.log('Starting to poll job:', uploadResponse.jobId)
+
+        const finalStatus = await pollJobStatus(
+          uploadResponse.jobId,
+          (status) => {
+            console.log('Job status update:', status)
+          },
+          2000 // Poll every 2 seconds
+        );
+
+        console.log('Final status:', finalStatus)
+
+        setIsProcessing(false)
+
+        if (finalStatus.ready && finalStatus.downloadUrl) {
+          setDownloadUrl(finalStatus.downloadUrl)
+        } else if (finalStatus.jobId) {
+          // Get download URL
+          const downloadData = await getDownloadUrl(finalStatus.jobId)
+          setDownloadUrl(downloadData.url)
+        } else {
+          throw new Error('No download URL available')
+        }
       } else {
         throw new Error('Invalid response from server')
       }

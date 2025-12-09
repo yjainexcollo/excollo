@@ -27,6 +27,12 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/webhook/, ''),
         secure: true,
+      },
+      '/api/pdf-csv': {
+        target: 'https://csv-backend-oyvb.onrender.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/pdf-csv/, ''),
+        secure: true,
       }
     }
   },
