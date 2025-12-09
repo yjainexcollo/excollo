@@ -21,6 +21,8 @@ import InfoIcon from "@mui/icons-material/Info";
 import BuildIcon from "@mui/icons-material/Build";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
+import WorkIcon from "@mui/icons-material/Work";
+import SmartToyIcon from "@mui/icons-material/SmartToy";
 import CloseIcon from "@mui/icons-material/Close";
 import ExcolloWebsiteLogo from "../assets/logo/ExcolloWebsiteLogo.png";
 
@@ -50,7 +52,9 @@ const NavBar = () => {
     { text: "Home", path: "/", icon: <HomeIcon /> },
     { text: "About Us", path: "/about", icon: <InfoIcon /> },
     { text: "Our Services", path: "/services", icon: <BuildIcon /> },
-    { text: "Product", path: "/product", icon: <InventoryIcon /> },
+    { text: "Our Work", path: "/our-work", icon: <WorkIcon /> },
+    { text: "AI Tools", path: "/tools", icon: <SmartToyIcon /> },
+    { text: "Our Product", path: "/product", icon: <InventoryIcon /> },
     { text: "Contact us", path: "/contact", icon: <ContactMailIcon /> },
   ];
 
@@ -249,6 +253,46 @@ const NavBar = () => {
               </Typography>
               <Typography
                 component={Link}
+                to="/our-work"
+                sx={{
+                  ...commonLinkStyles,
+                  height: "100%",
+                  fontWeight: "200",
+                  padding: {
+                    md: "0.5vw 0.8vw",
+                  },
+                  mt: 1,
+                  "&:hover": {
+                    background:
+                      "linear-gradient(180deg, rgba(170, 63, 255, 0.9) 0%, rgba(94, 129, 235, 0.9) 100%)",
+                    borderRadius: "80px",
+                  },
+                }}
+              >
+                Our Work
+              </Typography>
+              <Typography
+                component={Link}
+                to="/tools"
+                sx={{
+                  ...commonLinkStyles,
+                  height: "100%",
+                  fontWeight: "200",
+                  padding: {
+                    md: "0.5vw 0.8vw",
+                  },
+                  mt: 1,
+                  "&:hover": {
+                    background:
+                      "linear-gradient(180deg, rgba(170, 63, 255, 0.9) 0%, rgba(94, 129, 235, 0.9) 100%)",
+                    borderRadius: "80px",
+                  },
+                }}
+              >
+                AI Tools
+              </Typography>
+              <Typography
+                component={Link}
                 to="/product"
                 sx={{
                   ...commonLinkStyles,
@@ -265,7 +309,7 @@ const NavBar = () => {
                   },
                 }}
               >
-                Product
+                Our Product
               </Typography>
               <Typography
                 component={Link}
