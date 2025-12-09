@@ -26,7 +26,7 @@ import SwilInternalKnowledgeBot from "./Pages/caseStudies/SwilInternalKnowledgeB
 import Phyllo from "./Pages/caseStudies/Phyllo";
 import PDFsummarizer from "./Pages/caseStudies/PDFsummarizer";
 
-import SEOArticleGenerator from "./Pages/sampletools/SEOArticleGenerator";
+import SEOArticleGenerator from "./Pages/sampletools/SeoArticleGenerator";
 import SEOFeedback from "./Pages/sampletools/SEOFeedback";
 import FinNews from "./Pages/sampletools/finNews";
 import ECommCustomerInteraction from "./Pages/sampletools/eCommCustomerInteraction";
