@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Hide cursor by default on all elements */
+* {
+  cursor: auto !important;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  overflow: auto;
+  max-width: 100vw;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  /* Prevents bounce/rubber-band effect */
+  overscroll-behavior-y: none;
+  /* Specifically for vertical scrolling */
+  -webkit-overflow-scrolling: touch;
+  background-color: black;
+}
+
+
+/* Show default cursor for interactive elements */
+button:not(.custom-cursor-disable),
+input:not(.custom-cursor-disable),
+textarea:not(.custom-cursor-disable),
+select:not(.custom-cursor-disable),
+a:not(.custom-cursor-disable),
+img:not(.custom-cursor-disable),
+[role="button"]:not(.custom-cursor-disable),
+label:not(.custom-cursor-disable),
+[tabindex="0"]:not(.custom-cursor-disable),
+details:not(.custom-cursor-disable),
+summary:not(.custom-cursor-disable),
+[onclick]:not(.custom-cursor-disable),
+[contenteditable="true"]:not(.custom-cursor-disable),
+/* Icon selectors */
+
+i:not(.custom-cursor-disable),
+svg:not(.custom-cursor-disable),
+.png:not(.custom-cursor-disable),
+path:not(.custom-cursor-disable),
+.icon:not(.custom-cursor-disable),
+[class*="icon"]:not(.custom-cursor-disable),
+[class^="fa-"]:not(.custom-cursor-disable),
+[class*=" fa-"]:not(.custom-cursor-disable),
+[class^="material-icons"]:not(.custom-cursor-disable),
+[class*="material-symbols"]:not(.custom-cursor-disable),
+[class*="lucide-"]:not(.custom-cursor-disable) {
+  cursor: pointer !important;
+}
+
+iframe:not(.custom-cursor-disable) {
+  cursor: pointer !important;
+}
+
+/* Create an overlay for iframes to maintain custom cursor */
+.iframe-cursor-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  cursor: pointer !important;
+  pointer-events: "auto";
+}
+
+/* Show text cursor for text inputs and editable content */
+input[type="text"]:not(.custom-cursor-disable),
+input[type="email"]:not(.custom-cursor-disable),
+input[type="password"]:not(.custom-cursor-disable),
+input[type="search"]:not(.custom-cursor-disable),
+input[type="number"]:not(.custom-cursor-disable),
+textarea:not(.custom-cursor-disable),
+[contenteditable="true"]:not(.custom-cursor-disable) {
+  cursor: text !important;
+}
+
+/* Show resize cursors for resizable elements */
+textarea:not(.custom-cursor-disable),
+iframe:not(.custom-cursor-disable),
+img[draggable="true"]:not(.custom-cursor-disable) {
+  cursor: auto !important;
+}
+
+/* Optional: Add hover state cursors */
+button:hover:not(.custom-cursor-disable),
+/* :hover:not(.custom-cursor-disable), */
+a:hover:not(.custom-cursor-disable) {
+  cursor: pointer !important;
+}
+
+[role="button"]:hover:not(.custom-cursor-disable) {
+  cursor: none !important;
+}
+
+
+/* Specifically target MUI Accordion and all its children with high specificity */
+.MuiAccordion-root,
+.MuiAccordion-root *,
+div[class*="MuiAccordion-root"],
+div[class*="MuiAccordion-root"] * {
+  cursor: pointer !important;
+  pointer-events: pointer !important;
+}
+
+/* Target the expand icon and its container specifically */
+.MuiAccordionSummary-expandIconWrapper,
+.MuiAccordionSummary-expandIconWrapper *,
+button.MuiAccordionSummary-root,
+button.MuiAccordionSummary-root * {
+  cursor: pointer !important;
+}
+
+/* Override any interactive states */
+.MuiAccordion-root:hover,
+.MuiAccordion-root:active,
+.MuiAccordion-root:focus,
+.MuiAccordionSummary-root:hover,
+.MuiAccordionSummary-root:active,
+.MuiAccordionSummary-root:focus {
+  cursor: none !important;
+}
+
+/* Target the List components with high specificity */
+.MuiList-root,
+.MuiListItem-root,
+.MuiListItemIcon-root,
+.MuiListItemText-root,
+div[class*="MuiList-root"],
+div[class*="MuiListItem-root"],
+div[class*="MuiListItemIcon-root"],
+div[class*="MuiListItemText-root"] {
+  cursor: none !important;
+}
+
+/* Ensure buttons and clickable elements maintain functionality without pointer cursor */
+button,
+[role="button"],
+a,
+.MuiButtonBase-root {
+  cursor: none !important;
+  pointer-events: auto !important;
+}
+
+/* Target any element with 'button' in its class name */
+[class*="button"],
+[class*="Button"] {
+  cursor: none !important;
+}
